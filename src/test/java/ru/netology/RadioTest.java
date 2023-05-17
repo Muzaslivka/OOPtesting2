@@ -93,6 +93,7 @@ public class RadioTest {
         Radio rad = new Radio();
 
         rad.setCurrentRadioStationNumber(5);
+
         rad.setPrevRadioStationNumber();
 
 
@@ -226,6 +227,121 @@ public class RadioTest {
 
         int expected = 0;
         int actual = rad.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldSetRadioStationNumberQuantity30() {
+        Radio rad = new Radio(30);
+
+        rad.setCurrentRadioStationNumber(15);
+
+        int expected = 15;
+        int actual = rad.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+
+
+    }
+
+    @Test
+
+    public void shouldNotSetRadioStationNumberAboveMaxQuantity30() {
+        Radio rad = new Radio(30);
+
+        rad.setCurrentRadioStationNumber(30);
+
+        int expected = 0;
+
+        int actual = rad.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+
+
+    }
+
+    @Test
+    public void shouldNotSetRadioStationNumberBelowMinQuantity30() {
+        Radio rad = new Radio(30);
+
+        rad.setCurrentRadioStationNumber(-1);
+
+        int expected = 0;
+
+        int actual = rad.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+
+
+    }
+
+    @Test
+
+    public void shouldSetNextRadioStationNumberQuantity30() {
+
+        Radio rad = new Radio(30);
+
+        rad.setCurrentRadioStationNumber(15);
+        rad.setNextRadioStationNumber();
+
+
+        int expected = 16;
+        int actual = rad.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    @Test
+
+    public void shouldNotSetNextRadioStationNumberAboveMaxQuantity30() {
+
+        Radio rad = new Radio(30);
+
+        rad.setCurrentRadioStationNumber(29);
+        rad.setNextRadioStationNumber();
+
+
+        int expected = 0;
+        int actual = rad.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+
+
+    }
+
+    @Test
+
+    public void shouldSetPrevRadioStationNumberQuantity30() {
+
+        Radio rad = new Radio(30);
+
+        rad.setCurrentRadioStationNumber(15);
+
+        rad.setPrevRadioStationNumber();
+
+
+        int expected = 14;
+        int actual = rad.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+
+
+    }
+
+    @Test
+    public void shouldNotSetPrevRadioStationNumberBelowMinQuantity30() {
+
+        Radio rad = new Radio(30);
+
+        rad.setCurrentRadioStationNumber(0);
+        rad.setPrevRadioStationNumber();
+
+
+        int expected = 29;
+        int actual = rad.getCurrentRadioStationNumber();
 
         Assertions.assertEquals(expected, actual);
 
